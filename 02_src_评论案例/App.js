@@ -7,9 +7,25 @@ export default class App extends Component{
 	state = {
 		comments:[
 			{id:'001',name:'张三',content:'好难啊，不想爱了'},
-			{id:'002',name:'李四',content:'我觉得还好啊，很简单'},
-			{id:'003',name:'老刘',content:'还是html好玩'}
 		]
+	}
+
+	addComment = (commentObj)=>{
+		//1.获取原状态
+		let {comments} = this.state
+		//2.追加数据
+		comments.unshift(commentObj)
+		//3.更新状态
+		this.setState({comments})
+	}
+
+	deleteComment = (id)=>{
+		//去评论的数组中找到与传入id相同的那个评论，删除他。
+		let {comments} = this.state
+		comments = comments.filter((commentObj)=>{
+			return commentObj.id !== id
+		})
+		this.setState({comments})
 	}
 
 	render(){
@@ -25,8 +41,8 @@ export default class App extends Component{
 					</div>
 				</header>
 				<div className="container">
-					<Add/>
-					<List comments={this.state.comments}/>
+					<Add addComment={this.addComment}/>
+					<List comments={this.state.comments} deleteComment={this.deleteComment}/>
 				</div>
 			</div>
 		)
