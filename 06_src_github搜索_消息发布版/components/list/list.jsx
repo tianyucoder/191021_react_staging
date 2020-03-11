@@ -14,6 +14,7 @@ export default class List extends Component {
 	//1.定时器 2.订阅消息
 	componentDidMount(){
 		PubSub.subscribe('peiqi', (msg,data)=>{
+			console.log(msg);
 			this.setState(data)
 		});
 	}
