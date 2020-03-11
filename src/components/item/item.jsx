@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './item.css'
+import './items.css'
 
 export default class Item extends Component {
 	render() {
@@ -7,7 +7,7 @@ export default class Item extends Component {
 		return (
 			<div className="card">
 				<a href={html_url} target="_blank" rel="noopener noreferrer">
-					<img src={avatar_url} alt="" style={{width: '100px'}}/>
+					<img src={avatar_url} style={{width: '100px'}} alt="userPicture"/>
 				</a>
 				<p className="card-text">{login}</p>
 			</div>
